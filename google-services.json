@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457860511972",
+    "project_id": "fin-firebase-81186",
+    "storage_bucket": "fin-firebase-81186.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457860511972:android:2bc098ce62a74058fe54f1",
+        "android_client_info": {
+          "package_name": "com.incava.fin_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457860511972-cajkp86nea9fgbcnrssn9tt9gibha3me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF_XPinwKK5U8DYMmgSZXpR81EmQKkOZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457860511972-cajkp86nea9fgbcnrssn9tt9gibha3me.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
