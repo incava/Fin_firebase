@@ -1,24 +1,27 @@
-package com.incava.fin_firebase.adapter
+package com.incava.fin_firebase.Model
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.FirebaseDatabase
-import com.incava.fin_firebase.Model.Personinfo
 import com.incava.fin_firebase.databinding.ItemHomeBinding
 
-class PersonAdapter2 : RecyclerView.Adapter<PersonAdapter2.PersonViewHolder>() {
+class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
 
-    private lateinit var database:FirebaseDatabase
     private var personinfo =  mutableListOf<Personinfo>()
 
-    init{
-        //val database = Firebase.database
+    fun setListData(data:MutableList<Personinfo>){
+        personinfo = data
     }
+
+
+
     interface OnItemClickListener{
         fun onItemClick(v:View, data: Personinfo, pos : Int)
     }
+
+
     private var listener : OnItemClickListener? = null
     fun setOnItemClickListener(listener : OnItemClickListener) {
         this.listener = listener
@@ -40,13 +43,12 @@ class PersonAdapter2 : RecyclerView.Adapter<PersonAdapter2.PersonViewHolder>() {
                 {
                     itemView.setOnClickListener {
                         listener?.onItemClick(itemView,PersonItem,pos)
+                        Toast.makeText(binding.root.context,PersonItem.toString(),Toast.LENGTH_LONG).show()
                     }
                 }
-
             }
         }
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
         val binding = ItemHomeBinding.inflate(LayoutInflater.from(parent.context),parent,false)

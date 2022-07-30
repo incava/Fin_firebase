@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/messageFragment">
+    app:startDestination="@id/chatFragment">
 
     <fragment
         android:id="@+id/chatFragment"
@@ -13,9 +13,20 @@
         <action
             android:id="@+id/action_chatFragment_to_messageFragment"
             app:destination="@id/messageFragment" />
+        <action
+            android:id="@+id/action_chatFragment_to_chatListFragment"
+            app:destination="@id/chatListFragment" />
+        <argument
+            android:name="Chat_Name"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
         android:name="com.incava.fin_firebase.MessageFragment"
         android:label="MessageFragment" />
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.incava.fin_firebase.ChatListFragment"
+        android:label="ChatListFragment" />
 </navigation>
