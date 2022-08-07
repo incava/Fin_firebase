@@ -13,6 +13,7 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
 
     fun setListData(data:MutableList<Personinfo>){
         personinfo = data
+        notifyDataSetChanged()
     }
 
 
@@ -56,14 +57,7 @@ class PersonAdapter : RecyclerView.Adapter<PersonAdapter.PersonViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
-       /*if (itemClick != null) {
-            holder?.itemView?.setOnClickListener { v ->
-                //2.아이템 클릭시 onClick 함수 실행됨
-                itemClick!!.onClick(v, position)
-            }
-        }*/
         holder.bind(personinfo[position])
-        //holder.bind(personinfo[position])
     }
 
     override fun getItemCount(): Int {

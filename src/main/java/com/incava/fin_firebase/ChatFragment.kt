@@ -1,6 +1,5 @@
 package com.incava.fin_firebase
 
-import android.app.Person
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,11 +15,11 @@ import com.incava.fin_firebase.Model.Personinfo
 import com.incava.fin_firebase.Model.PersonAdapter
 import com.incava.fin_firebase.Model.PersonViewModel
 import com.incava.fin_firebase.databinding.FragmentChatBinding
+import kotlin.random.Random
 
 class ChatFragment : Fragment() {
-
-    var personAdapter = PersonAdapter()
-    private var personinfo =  mutableListOf<Personinfo>()
+    val database = Firebase.database
+    private lateinit var personAdapter:PersonAdapter
     private var binding: FragmentChatBinding? = null
 
     override fun onCreateView(
@@ -31,20 +30,20 @@ class ChatFragment : Fragment() {
         val view = FragmentChatBinding.inflate(inflater, container, false)
         return view.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val fragmentChatBinding = FragmentChatBinding.bind(view)
         binding = fragmentChatBinding
+        personAdapter = PersonAdapter()
         fragmentChatBinding.RecyclerItem.adapter = personAdapter
         observerData()
 
         view.findViewById<Button>(R.id.button_Tolist).setOnClickListener{
-            val database = Firebase.database
-            val random = (1..20).random()
             val myRef = database.getReference("User")
-            var student = HashMap<String, Personinfo>()
-            myRef.child("ingi$random").setValue(Personinfo("ingi11124@naver.com","최인기43","www.naver3.com4","42호"))
+            var random = (1..100).random()
+            myRef.child("ingi$random").setValue(Personinfo("ingi1112@naver.com","최인기2","www.naver.com2","2호"))
         }
 
         //
@@ -99,11 +98,9 @@ class ChatFragment : Fragment() {
             }
             })
     }
-
     private fun observerData(){
         PersonViewModel().fetchData().observe(viewLifecycleOwner, Observer {
             personAdapter.setListData(it)
-            personAdapter.notifyDataSetChanged()
         })
     }
 }
